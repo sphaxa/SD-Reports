@@ -1,0 +1,1 @@
+exports.helper = require("./helperFunc");

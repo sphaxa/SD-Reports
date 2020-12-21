@@ -9,6 +9,9 @@
   "author": "sphhax",
   "license": "ISC",
   "dependencies": {
+    "console-error": "0.0.4",
+    "console-info": "0.0.5",
+    "console-warn": "0.0.4",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0"
   }
