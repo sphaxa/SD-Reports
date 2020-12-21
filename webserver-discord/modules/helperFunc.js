@@ -13,7 +13,10 @@ function sendOutput(type, message)
             console.error("ERROR | " + currDate + " | " + message)
             break;
         case 'info':
-            console.info("INFO | " + currDate + " | " + message)
+            console.info("INFO  | " + currDate + " | " + message)
+            break;
+        case 'warn':
+            console.info("WARN  | " + currDate + " | " + message)
             break;
     }
 }

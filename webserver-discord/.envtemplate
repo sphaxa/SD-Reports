@@ -1,4 +1,4 @@
-DISCORD_BOT_TOKEN=
-PING_ROLE_ID=
-CHANNEL_ID=
-DOMAIN_NAME=
+DISCORD_BOT_TOKEN=REQUIRED, Bot Token generated in Discord Developer Portal
+PING_ROLE_ID=REQUIRED, the Discord role id that you want to be pinged when a report is made
+CHANNEL_ID=REQUIRED, the Discord channel id of the channel you want reports to be posted in
+CUSTOM_MESSAGE=Custom message that will be displayed on all reports, coppletely optional
