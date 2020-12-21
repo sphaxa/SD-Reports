@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mod = require("./")
 
 function checkConfig()
@@ -11,4 +12,17 @@ function checkConfig()
     mod.logger.send('info', 'Config check finished')
 }
 
-module.exports = {checkConfig};
+function checkReport(report) {
+    let pass = false;
+    let config = mod.config.config; // Jesus
+    config.SERVERS.forEach(function(item, index) {
+        if (item.ID == report.SERVER_ID) {pass = true; return;}});
+    if (pass) {return true;} else {return false;}
+}
+
+function checkSecurity(key) {
+    let SECURITY_KEY = process.env.SECURITY_KEY;
+    if (key == SECURITY_KEY) {return true;} else {return false;}
+}
+
+module.exports = {checkConfig, checkReport, checkSecurity};

@@ -9,6 +9,7 @@
   "author": "sphhax",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "console-error": "0.0.4",
     "console-info": "0.0.5",
     "console-warn": "0.0.4",

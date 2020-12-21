@@ -1,1 +1,2 @@
 DISCORD_BOT_TOKEN=REQUIRED, Bot Token generated in Discord Developer Portal
+SECURITY_KEY=REQUIRED, token that you generate yourself and put on both the webserver and gameserver to validate requests
