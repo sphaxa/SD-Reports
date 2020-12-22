@@ -8,6 +8,7 @@ const mod = require('./modules');
 mod.bot.client.on('ready', () => {
   mod.logger.send('info', 'Bot token authorized, bot online');
   mod.checks.checkConfig();
+  mod.bot.initBot();
 });
 
 // WEB SERVER
