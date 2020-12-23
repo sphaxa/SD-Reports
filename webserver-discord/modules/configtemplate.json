@@ -1,11 +1,12 @@
 {
-    "CHANNEL_ID": 0,
-    "PORT": 0,
+    "GUILD_ID": "",
+    "CHANNEL_ID": "",
+    "PORT": 3000,
     "CUSTOM_MESSAGE": "",
     "SERVERS": [
         {
-            "ID": 0,
-            "ROLE_ID": 0
+            "ID": 1,
+            "ROLE_ID": ""
         }
     ]
 }
