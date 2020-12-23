@@ -1,5 +1,6 @@
-# source-discord-report-bot
+# SD Reports
 Player report bot for source engine games and Discord
+Allows users to report players in game, and notifies Admins on Discord
 
 DiscordJS, ExpressJS, and SourcePawn
 
