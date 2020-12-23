@@ -15,3 +15,14 @@ DiscordJS, ExpressJS, and SourcePawn
 - Server join link, Reporter and Reportee steam id's and profile links
 - Time logging from report creation to claim
 - If an Admin is on the server when a report is made, they are notified as well
+
+## Requirements
+- Webserver with networking configured for an Express server.
+- Gameserver running SourceMod.
+- A discord server.
+
+### Game server specific
+- system2 (https://forums.alliedmods.net/archive/index.php/t-146019.html)
+
+## To Deploy (W.I.P)
+### Web / Discord
