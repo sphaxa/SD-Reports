@@ -9,8 +9,25 @@ function initBot() {
 }
 
 function sendReportMessage(msg) {
-    msg = JSON.stringify(msg)
-    client.channels.cache.get(mod.config.config.CHANNEL_ID).send("<@&" + mod.config.config.SERVERS[0].ROLE_ID + ">" + msg);
+    let channel = client.channels.cache.get(mod.config.config.CHANNEL_ID);
+    let role_ping_id = getPingRoleForServer(msg.SERVER_ID);
+    const embed = new Discord.MessageEmbed()
+    .setTitle("A new Report has been made!")
+    .setAuthor("SD Report Bot")
+    .setColor("#000000")
+    .setDescription(`<@&${role_ping_id}>, [${msg.REPORTER_NAME}]("https://www.google.com") has reported [${msg.REPORTEE_NAME}]("https://www.google.com") on [${msg.SERVER_NAME}]("https://www.google.com") for ${msg.REPORT_REASON}!`)
+    .setFooter("VERSION")
+    .setTimestamp()
+    channel.send("<@&" + role_ping_id + ">")
+    channel.send({embed})
+}
+
+function getPingRoleForServer(serverid) {
+    for (var i = 0; i < mod.config.config.SERVERS.length; i++ ) {
+        if (mod.config.config.SERVERS[i].ID == serverid) {
+            return mod.config.config.SERVERS[i].ROLE_ID;
+        }
+    }
 }
 
 module.exports = {client, initBot, sendReportMessage};
