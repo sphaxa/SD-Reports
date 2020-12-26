@@ -11,12 +11,21 @@ function initBot() {
 function sendReportMessage(msg) {
     let channel = client.channels.cache.get(mod.config.config.CHANNEL_ID);
     let role_ping_id = getPingRoleForServer(msg.SERVER_ID);
+    let server_name = getNameForServer(msg.SERVER_ID);
     const embed = new Discord.MessageEmbed()
-    .setTitle("A new Report has been made!")
-    .setAuthor("SD Report Bot")
-    .setColor("#000000")
-    .setDescription(`<@&${role_ping_id}>, [${msg.REPORTER_NAME}]("https://www.google.com") has reported [${msg.REPORTEE_NAME}]("https://www.google.com") on [${msg.SERVER_NAME}]("https://www.google.com") for ${msg.REPORT_REASON}!`)
-    .setFooter("VERSION")
+    .setTitle("New Report")
+    .setAuthor('SD Reports', 'https://i.imgur.com/CJvAgsd.png', 'https://github.com/sphhax/SD-Reports')
+    .setColor("#2874e6")
+    .setThumbnail('https://i.imgur.com/CJvAgsd.png')
+    .addFields(
+        { name: 'Reported Player', value: `${msg.REPORTEE_NAME}` },
+        { name: 'Report Reason', value: `${msg.REPORT_REASON}` },
+		{ name: '\u200B', value: '\u200B' },
+		{ name: 'Reporter', value: `${msg.REPORTER_NAME}`, inline: true },
+        { name: 'Server', value: `${server_name}`, inline: true },
+        { name: 'Status', value: `NOT CLAIMED`, inline: true }
+	)
+    .setFooter("🌿 0.1.0")
     .setTimestamp()
     channel.send("<@&" + role_ping_id + ">")
     channel.send({embed})
@@ -26,6 +35,14 @@ function getPingRoleForServer(serverid) {
     for (var i = 0; i < mod.config.config.SERVERS.length; i++ ) {
         if (mod.config.config.SERVERS[i].ID == serverid) {
             return mod.config.config.SERVERS[i].ROLE_ID;
+        }
+    }
+}
+
+function getNameForServer(serverid) {
+    for (var i = 0; i < mod.config.config.SERVERS.length; i++ ) {
+        if (mod.config.config.SERVERS[i].ID == serverid) {
+            return mod.config.config.SERVERS[i].NAME;
         }
     }
 }

@@ -6,6 +6,7 @@
     "SERVERS": [
         {
             "ID": 1,
+            "NAME": "",
             "ROLE_ID": ""
         }
     ]
