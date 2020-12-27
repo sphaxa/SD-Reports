@@ -7,6 +7,7 @@ const mod = require('./modules');
 // DISCORD BOT
 mod.bot.client.on('ready', () => {
   mod.logger.send('info', 'Bot token authorized, bot online');
+  mod.bot.client.user.setActivity("for reports | 🌿 DEV", { type: "WATCHING"})
   mod.checks.checkConfig();
   mod.bot.initBot();
 });

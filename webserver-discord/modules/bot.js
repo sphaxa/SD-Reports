@@ -25,7 +25,7 @@ function sendReportMessage(msg) {
         { name: 'Server', value: `${server_name}`, inline: true },
         { name: 'Status', value: `NOT CLAIMED`, inline: true }
 	)
-    .setFooter("🌿 0.1.0")
+    .setFooter("🌿 DEV")
     .setTimestamp()
     channel.send("<@&" + role_ping_id + ">")
     channel.send({embed})
