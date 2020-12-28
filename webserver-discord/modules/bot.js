@@ -12,10 +12,11 @@ function sendReportMessage(msg) {
     let channel = client.channels.cache.get(mod.config.config.CHANNEL_ID);
     let role_ping_id = getPingRoleForServer(msg.SERVER_ID);
     let server_name = getNameForServer(msg.SERVER_ID);
+    const embed_color = Math.floor(Math.random()*16777215).toString(16);
     const embed = new Discord.MessageEmbed()
     .setTitle("New Report")
     .setAuthor('SD Reports', 'https://i.imgur.com/CJvAgsd.png', 'https://github.com/sphhax/SD-Reports')
-    .setColor("#2874e6")
+    .setColor(embed_color)
     .setThumbnail('https://i.imgur.com/CJvAgsd.png')
     .addFields(
         { name: 'Reported Player', value: `${msg.REPORTEE_NAME}` },
@@ -27,7 +28,7 @@ function sendReportMessage(msg) {
 	)
     .setFooter("🌿 DEV")
     .setTimestamp()
-    channel.send("<@&" + role_ping_id + ">")
+    channel.send("<@&" + role_ping_id + "> ⤵")
     channel.send({embed})
 }
 

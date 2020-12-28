@@ -1,6 +1,6 @@
 {
   "name": "sd-reports",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Web and Discord component for source engine player reports",
   "main": "index.js",
   "scripts": {
