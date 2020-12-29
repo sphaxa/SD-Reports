@@ -17,16 +17,15 @@ function sendReportMessage(msg) {
     .setTitle("New Report")
     .setAuthor('SD Reports', 'https://i.imgur.com/CJvAgsd.png', 'https://github.com/sphhax/SD-Reports')
     .setColor(embed_color)
-    .setThumbnail('https://i.imgur.com/CJvAgsd.png')
     .addFields(
-        { name: 'Reported Player', value: `${msg.REPORTEE_NAME}` },
+        { name: 'Reported Player', value: `${msg.REPORTEE_NAME} [(Profile)](https://steamid.uk/profile/${msg.REPORTED_ID})` },
         { name: 'Report Reason', value: `${msg.REPORT_REASON}` },
 		{ name: '\u200B', value: '\u200B' },
-		{ name: 'Reporter', value: `${msg.REPORTER_NAME}`, inline: true },
+		{ name: 'Reporter', value: `[${msg.REPORTER_NAME}](https://steamid.uk/profile/${msg.REPORTER_ID})`, inline: true },
         { name: 'Server', value: `${server_name}`, inline: true },
-        { name: 'Status', value: `NOT CLAIMED`, inline: true }
+        { name: 'Status', value: `-`, inline: true }
 	)
-    .setFooter("🌿 DEV")
+    .setFooter("🌿 0.1.1")
     .setTimestamp()
     channel.send("<@&" + role_ping_id + "> ⤵")
     channel.send({embed})

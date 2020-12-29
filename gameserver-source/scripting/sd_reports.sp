@@ -57,6 +57,8 @@ public Action Sdrgame_Report(int client, int args)
 {
 	char reported_player_resolved[64];
 	char reporter_player_resolved[64];
+	char reported_player_resolved_id[64];
+	char reporter_player_resolved_id[64];
 	int target_index;
 	if (args < 2) {
 		ReplyToCommand(client, "\x0FREPORTS\x02 | \x01Report Bot Usage: !report <playername> <reason>");
@@ -81,14 +83,17 @@ public Action Sdrgame_Report(int client, int args)
 	GetClientName(target_index, reported_player_resolved, sizeof(reported_player_resolved));
 	GetClientName(client, reporter_player_resolved, sizeof(reporter_player_resolved));
 	
-	reportRequestMethod(reporter_player_resolved, reported_player_resolved, report_reason);
+	GetClientAuthId(target_index, AuthId_SteamID64, reported_player_resolved_id, sizeof(reported_player_resolved_id));
+	GetClientAuthId(client, AuthId_SteamID64, reporter_player_resolved_id, sizeof(reporter_player_resolved_id));
+	
+	reportRequestMethod(reporter_player_resolved, reported_player_resolved, report_reason, reporter_player_resolved_id, reported_player_resolved_id);
 	ReplyToCommand(client, "\x0FREPORTS\x02 | \x01Report Sent.");
 	return Plugin_Handled;
 }
 
-public void reportRequestMethod(char reporter_player[64], char reported_player[64], char report_reason[128]) {
+public void reportRequestMethod(char reporter_player[64], char reported_player[64], char report_reason[128], char reporter_id[64], char reported_id[64]) {
 	System2HTTPRequest reportRequest = new System2HTTPRequest(HttpResponseCallback, "http://184.187.247.109:3000/report");
-	reportRequest.SetData("SERVER_ID=1&REPORTER_NAME=%s&REPORTER_STEAMID=&REPORTEE_NAME=%s&REPORTEE_STEAMID=&REPORT_REASON=%s&SECURITY_KEY=ayo", reporter_player, reported_player, report_reason);
+	reportRequest.SetData("SERVER_ID=1&REPORTER_NAME=%s&REPORTER_STEAMID=&REPORTEE_NAME=%s&REPORTEE_STEAMID=&REPORT_REASON=%s&SECURITY_KEY=ayo&REPORTER_ID=%s&REPORTED_ID=%s", reporter_player, reported_player, report_reason, reporter_id, reported_id);
 	reportRequest.POST();
 	delete reportRequest; 
 }
